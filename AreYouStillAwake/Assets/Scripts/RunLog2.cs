@@ -35,6 +35,8 @@ public class RunLog2 : MonoBehaviour
     // tracking the convo progress
     private bool messagesLeft = true;
 
+    // get a reference to the exit button to control when the player can leave
+    [SerializeField] private Button exitButton;
 
     private void Awake()
     {
@@ -58,6 +60,12 @@ public class RunLog2 : MonoBehaviour
         else
         {
             gameObject.GetComponent<Button>().interactable = true;
+        }
+
+        if(theirCurrentPos == theirMsgs.Length && !messagesLeft)
+        {
+            // the conversation has ended, so allow the player to exit the chat
+            exitButton.GetComponent<Button>().interactable = true;
         }
     }
 
@@ -106,6 +114,7 @@ public class RunLog2 : MonoBehaviour
             if (myCurrentPos == myMsgs.Length - 1)
             {
                 messagesLeft = false;
+                logControl.LogEnd();
             }
 
             myCurrentPos++;
@@ -139,6 +148,11 @@ public class RunLog2 : MonoBehaviour
         if (theirTriggerIndex <= theirTriggers.Length - 1)
         {
             theirNextTrigger = theirTriggers[theirTriggerIndex];
+        }
+
+        if (!messagesLeft)
+        {
+            logControl.LogEnd();
         }
     }
 }

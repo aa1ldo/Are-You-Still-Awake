@@ -11,6 +11,12 @@ public class MessageLogControl : MonoBehaviour
     private GameObject friendTextTemplate;
 
     [SerializeField]
+    private GameObject start;
+
+    [SerializeField]
+    private GameObject end;
+
+    [SerializeField]
     private Transform content;
 
     public void LogText(string newMessage)
@@ -27,5 +33,11 @@ public class MessageLogControl : MonoBehaviour
         newTextFriend.SetActive(true);
 
         newTextFriend.GetComponent<MessageLogText>().SetText(newMessageFriend);
+    }
+
+    public void LogEnd()
+    {
+        GameObject newEnd = Instantiate(end, content) as GameObject;
+        newEnd.SetActive(true);
     }
 }

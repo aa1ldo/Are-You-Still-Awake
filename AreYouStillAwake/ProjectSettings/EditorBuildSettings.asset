@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Messaging.unity
     guid: 3f828160c5125d445ba9fbd6d87228be
+  - enabled: 1
+    path: Assets/Scenes/Breathing.unity
+    guid: b2a2231362ffef54eb5c46a3cc149c83
   m_configObjects: {}

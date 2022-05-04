@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Load : MonoBehaviour
 {
+    // [SerializeField] private LevelLoader loader;
     [SerializeField] private int sceneToLoad;
     [SerializeField] private int sceneToUnload;
 
@@ -15,6 +16,10 @@ public class Load : MonoBehaviour
     {
         if (!loaded)
         {
+            // call the external function to play the loading animation
+
+            // StartCoroutine(loader.LoadLevel(sceneToLoad, sceneToUnload));
+
             SceneManager.LoadSceneAsync(sceneToLoad, LoadSceneMode.Additive);
 
             loaded = true;
@@ -23,6 +28,8 @@ public class Load : MonoBehaviour
         if (!unloaded)
         {
             unloaded = true;
+
+            // call the external function to play the loading animation
 
             GameManager.instance.UnloadScene(sceneToUnload);
         }
