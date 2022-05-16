@@ -156,12 +156,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8025fec67f46f0040a3e375be8dacd09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 107408359}
   currentScore: 0
   blossom: {fileID: 199047798}
   boxAnim: {fileID: 107408363}
   blossomAnim: {fileID: 199047799}
-  thrust: 0.05
-  scoreValue: 0.01
+  thrust: 10
+  incrementVal: 0.012
+  decreaseVal: 0.005
   maxScore: 200
 --- !u!50 &107408359
 Rigidbody2D:

@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Load : MonoBehaviour
 {
-    // [SerializeField] private LevelLoader loader;
+    [SerializeField] private Image black;
+    [SerializeField] private Animator anim;
+
     [SerializeField] private int sceneToLoad;
     [SerializeField] private int sceneToUnload;
 
@@ -14,12 +17,16 @@ public class Load : MonoBehaviour
 
     void OnTriggerEnter2D()
     {
+        StartCoroutine(Fading());
+    }
+
+    IEnumerator Fading()
+    {
+        anim.SetBool("Fade", true);
+        yield return new WaitUntil(() => black.color.a == 1);
+
         if (!loaded)
         {
-            // call the external function to play the loading animation
-
-            // StartCoroutine(loader.LoadLevel(sceneToLoad, sceneToUnload));
-
             SceneManager.LoadSceneAsync(sceneToLoad, LoadSceneMode.Additive);
 
             loaded = true;
@@ -28,8 +35,6 @@ public class Load : MonoBehaviour
         if (!unloaded)
         {
             unloaded = true;
-
-            // call the external function to play the loading animation
 
             GameManager.instance.UnloadScene(sceneToUnload);
         }

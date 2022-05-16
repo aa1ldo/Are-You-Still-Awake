@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Box : MonoBehaviour
 {
-    Rigidbody2D rb;
+    [SerializeField] private Rigidbody2D rb;
 
     bool started = false;
     bool onscreen = false;
@@ -17,7 +17,8 @@ public class Box : MonoBehaviour
     [SerializeField] Animator boxAnim;
     [SerializeField] Animator blossomAnim;
     [SerializeField] private float thrust;
-    [SerializeField] private float scoreValue;
+    [SerializeField] private float incrementVal;
+    [SerializeField] private float decreaseVal;
     [SerializeField] private float maxScore = 100f;
 
     private void Start()
@@ -52,7 +53,7 @@ public class Box : MonoBehaviour
         }
         else if(Input.GetKey(KeyCode.Z) && started)
         {
-            rb.AddForce(transform.up * thrust, ForceMode2D.Impulse);
+            rb.AddForce(transform.up * thrust * Time.deltaTime, ForceMode2D.Impulse);
         }
 
         if (currentScore >= 100)
@@ -63,14 +64,14 @@ public class Box : MonoBehaviour
         {
             if (currentScore < maxScore)
             {
-                currentScore += scoreValue;
+                currentScore += incrementVal;
             }
         }
         else if (!collided && started)
         {
             if (currentScore > 0 && currentScore != maxScore)
             {
-                currentScore -= scoreValue;
+                currentScore -= decreaseVal;
             }
             else
             {

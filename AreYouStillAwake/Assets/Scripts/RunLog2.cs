@@ -8,6 +8,10 @@ public class RunLog2 : MonoBehaviour
     // reference to the script that logs messages
     [SerializeField] private MessageLogControl logControl;
 
+    [SerializeField] private float responseTime;
+    [SerializeField] private float responseDelay;
+    [SerializeField] private bool randomiseResponseTime;
+
     // lists of all messages as strings
     [SerializeField] private string[] myMsgs;
     [SerializeField] private string[] theirMsgs;
@@ -38,6 +42,8 @@ public class RunLog2 : MonoBehaviour
     // get a reference to the exit button to control when the player can leave
     [SerializeField] private Button exitButton;
 
+    [SerializeField] private GameObject typingPrompt;
+
     private void Awake()
     {
         // initialise:
@@ -49,6 +55,8 @@ public class RunLog2 : MonoBehaviour
 
         myNextTrigger = myTriggers[myTriggerIndex];
         theirNextTrigger = theirTriggers[theirTriggerIndex];
+
+        typingPrompt.SetActive(false);
     }
 
     private void Update()
@@ -127,7 +135,20 @@ public class RunLog2 : MonoBehaviour
         {
             theirCurrentMsg = theirMsgs[theirCurrentPos];
 
-            yield return new WaitForSeconds(1f);
+            // randomise a response time
+            if (randomiseResponseTime)
+            {
+                responseTime = Random.Range(0.8f, 2f);
+                responseDelay = Random.Range(0.2f, 0.5f);
+            }
+
+            yield return new WaitForSeconds(responseDelay);
+
+            typingPrompt.SetActive(true);
+
+            yield return new WaitForSeconds(responseTime);
+
+            typingPrompt.SetActive(false);
 
             logControl.LogTextFriend(theirCurrentMsg); // log the friend's message
 

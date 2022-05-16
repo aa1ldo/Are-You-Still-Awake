@@ -11,9 +11,6 @@ public class MessageLogControl : MonoBehaviour
     private GameObject friendTextTemplate;
 
     [SerializeField]
-    private GameObject start;
-
-    [SerializeField]
     private GameObject end;
 
     [SerializeField]
