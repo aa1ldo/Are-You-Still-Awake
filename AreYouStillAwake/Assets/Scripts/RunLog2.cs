@@ -39,10 +39,18 @@ public class RunLog2 : MonoBehaviour
     // tracking the convo progress
     private bool messagesLeft = true;
 
+    // used for activating the next trigger, does not affect this script
+    [HideInInspector] public bool convoDone;
+
     // get a reference to the exit button to control when the player can leave
     [SerializeField] private Button exitButton;
 
     [SerializeField] private GameObject typingPrompt;
+
+    private void Start()
+    {
+        convoDone = false;
+    }
 
     private void Awake()
     {
@@ -73,6 +81,7 @@ public class RunLog2 : MonoBehaviour
         if(theirCurrentPos == theirMsgs.Length && !messagesLeft)
         {
             // the conversation has ended, so allow the player to exit the chat
+            convoDone = true;
             exitButton.GetComponent<Button>().interactable = true;
         }
     }

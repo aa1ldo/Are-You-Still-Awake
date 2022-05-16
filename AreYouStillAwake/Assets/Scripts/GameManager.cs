@@ -27,6 +27,17 @@ public class GameManager : MonoBehaviour
     [Header("Chats")]
     [SerializeField] private GameObject messaging1a;
     [SerializeField] private GameObject messaging1b;
+    [SerializeField] private GameObject messaging2;
+    [SerializeField] private GameObject messaging3;
+    [SerializeField] private GameObject messaging4;
+    [SerializeField] private GameObject messaging5;
+
+    [SerializeField] private RunLog2 convoState1a;
+    [SerializeField] private RunLog2 convoState1b;
+    [SerializeField] private RunLog2 convoState2;
+    [SerializeField] private RunLog2 convoState3;
+    [SerializeField] private RunLog2 convoState4;
+    [SerializeField] private RunLog2 convoState5;
 
     void Awake()
     {
@@ -54,45 +65,63 @@ public class GameManager : MonoBehaviour
     {
         // check if the triggers still exist/dont exist. (after they are interacted with they are destroyed)
         // activate next activity based on this
-        if(!chat1a && chat1b)
+        if(!chat1a && chat1b && convoState1a.convoDone)
             chat1b.SetActive(true);
         
-        if (!chat1b && roomActivity)
+        if (!chat1b && roomActivity && convoState1b.convoDone)
             roomActivity.SetActive(true);
 
-        if(!roomActivity && photoAlbum)
+        if(!roomActivity)
             photoAlbum.SetActive(true);
 
-        if(!photoAlbum && chat2)
+        if(!roomActivity && chat2 && convoState1b.convoDone)
             chat2.SetActive(true);
 
-        if(!chat2 && snackActivity)
+        if(!chat2 && snackActivity && convoState2.convoDone)
             snackActivity.SetActive(true);
 
-        if(!snackActivity && chat3)
+        if(!snackActivity && chat3 && convoState2.convoDone)
             chat3.SetActive(true);
 
-        if(!chat3 && chat4)
+        if(!chat3 && chat4 && convoState3.convoDone)
             chat4.SetActive(true);
 
-        if (!chat4 && chat5)
+        if (!chat4 && chat5 && convoState4.convoDone)
             chat5.SetActive(true);
 
-        if (!chat5)
+        if (!chat5 && convoState5.convoDone)
             breathingActivity.SetActive(true);
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (!chat1a && chat1b)
             {
-                Debug.Log("show chat 1 a");
                 messaging1a.SetActive(true);
                 phoneUI.SetBool("Notif", false);
             }
             else if (!chat1b && chat2)
             {
-                Debug.Log("show chat 1 b");
                 messaging1b.SetActive(true);
+                phoneUI.SetBool("Notif", false);
+            }
+            else if (!chat2 && chat3)
+            {
+                messaging2.SetActive(true);
+                phoneUI.SetBool("Notif", false);
+            }
+            else if (!chat3 && chat4)
+            {
+                messaging3.SetActive(true);
+                phoneUI.SetBool("Notif", false);
+            }
+            else if (!chat4 && chat5)
+            {
+                messaging4.SetActive(true);
+                phoneUI.SetBool("Notif", false);
+            }
+            else if (!chat5)
+            {
+                messaging5.SetActive(true);
                 phoneUI.SetBool("Notif", false);
             }
             else
