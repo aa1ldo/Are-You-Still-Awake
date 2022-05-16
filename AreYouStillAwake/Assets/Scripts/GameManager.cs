@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private float animDuration = 1f;
 
+    [SerializeField] private Animator phoneUI;
+
     [Header("Triggers")]
     [SerializeField] private GameObject chat1a;
     [SerializeField] private GameObject chat1b;
@@ -25,8 +27,6 @@ public class GameManager : MonoBehaviour
     [Header("Chats")]
     [SerializeField] private GameObject messaging1a;
     [SerializeField] private GameObject messaging1b;
-
-    [HideInInspector] public bool newChat;
 
     void Awake()
     {
@@ -87,11 +87,13 @@ public class GameManager : MonoBehaviour
             {
                 Debug.Log("show chat 1 a");
                 messaging1a.SetActive(true);
+                phoneUI.SetBool("Notif", false);
             }
             else if (!chat1b && chat2)
             {
                 Debug.Log("show chat 1 b");
                 messaging1b.SetActive(true);
+                phoneUI.SetBool("Notif", false);
             }
             else
             {

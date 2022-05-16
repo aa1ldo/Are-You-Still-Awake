@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GeneralInteractTrigger : MonoBehaviour
+public class AlbumTrigger : MonoBehaviour
 {
     [SerializeField] private GameObject visualCue;
-    [SerializeField] private GameObject toOpen;
+    [SerializeField] private GameObject album;
     [SerializeField] private PlayerMovement player;
 
     bool playerInRange;
@@ -13,28 +13,25 @@ public class GeneralInteractTrigger : MonoBehaviour
     private void Awake()
     {
         playerInRange = false;
-        toOpen.SetActive(false);
+        album.SetActive(false);
     }
 
     private void Update()
     {
         if (playerInRange)
         {
-            // visualCue.SetActive(true);
+            visualCue.SetActive(true);
             if (Input.GetKeyDown(KeyCode.Z))
             {
-                /*
-                toOpen.SetActive(true);
+                album.SetActive(true);
                 player.freezePlayer = true;
                 playerInRange = false;
                 visualCue.SetActive(false);
-                Destroy(gameObject);
-                */
             }
         }
         else
         {
-            // visualCue.SetActive(false);
+            visualCue.SetActive(false);
         }
     }
 
@@ -42,12 +39,9 @@ public class GeneralInteractTrigger : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            GameManager.instance.newChat = true;
-            Destroy(gameObject);
+            playerInRange = true;
         }
     }
-
-    /*
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
@@ -55,5 +49,4 @@ public class GeneralInteractTrigger : MonoBehaviour
             playerInRange = false;
         }
     }
-    */
 }
