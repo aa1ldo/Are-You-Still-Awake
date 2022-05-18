@@ -13,7 +13,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Animator phoneUI;
 
     [Header("Triggers")]
+    [SerializeField] private GameObject dialogue1;
+    [SerializeField] private GameObject dialogue2;
     [SerializeField] private GameObject chat1a;
+    [SerializeField] private GameObject dialogue3;
     [SerializeField] private GameObject chat1b;
     [SerializeField] private GameObject roomActivity;
     [SerializeField] private GameObject photoAlbum;
@@ -48,7 +51,10 @@ public class GameManager : MonoBehaviour
             gameStart = true;
 
             // initialise triggers
-            chat1a.SetActive(true);
+            dialogue1.SetActive(true);
+            dialogue2.SetActive(false);
+            chat1a.SetActive(false);
+            dialogue3.SetActive(false);
             chat1b.SetActive(false);
             roomActivity.SetActive(false);
             photoAlbum.SetActive(false);
@@ -65,7 +71,19 @@ public class GameManager : MonoBehaviour
     {
         // check if the triggers still exist/dont exist. (after they are interacted with they are destroyed)
         // activate next activity based on this
-        if(!chat1a && chat1b && convoState1a.convoDone)
+
+        // CURRENTLY NOT WORKING LOL:
+
+        if (!dialogue1 && dialogue2)
+            dialogue2.SetActive(true);
+
+        if (!dialogue2 && chat1a)
+            chat1a.SetActive(true);
+
+        if (!chat1a && dialogue3)
+            dialogue3.SetActive(true);
+
+        if(!dialogue3 && chat1b && convoState1a.convoDone)
             chat1b.SetActive(true);
         
         if (!chat1b && roomActivity && convoState1b.convoDone)
