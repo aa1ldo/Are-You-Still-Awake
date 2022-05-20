@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class TempInteract : MonoBehaviour
+public class ActivityTrigger : MonoBehaviour
 {
-    [SerializeField] private GameObject visualCue;
+    [SerializeField] private GameObject roomClearingCanvas;
+    [SerializeField] private GameObject snackMakingCanvas;
 
     [Header("Activity - pick 1")]
     [SerializeField] private bool roomClearingActivity;
@@ -22,20 +23,18 @@ public class TempInteract : MonoBehaviour
     {
         if (playerInRange)
         {
-            visualCue.SetActive(true);
             if (Input.GetKeyDown(KeyCode.Z))
             {
                 if (roomClearingActivity)
                 {
-                    SceneManager.LoadSceneAsync("RoomCleaning", LoadSceneMode.Additive);
+                    roomClearingCanvas.SetActive(true);
                 }
-                visualCue.SetActive(false);
+                else
+                {
+                    snackMakingCanvas.SetActive(true);
+                }
                 Destroy(gameObject);
             }
-        }
-        else
-        {
-            visualCue.SetActive(false);
         }
     }
 

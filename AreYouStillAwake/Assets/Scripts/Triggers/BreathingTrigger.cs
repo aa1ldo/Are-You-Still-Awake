@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ActivityInteract : MonoBehaviour
+public class BreathingTrigger : MonoBehaviour
 {
     [SerializeField] private GameObject visualCue;
     [SerializeField] private string sceneToLoad;

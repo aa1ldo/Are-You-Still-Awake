@@ -9,7 +9,10 @@ EditorBuildSettings:
     path: Assets/Scenes/NeverUnload.unity
     guid: 78d6c08549d1d8e4ba81572726b544fe
   - enabled: 1
-    path: Assets/Scenes/Second/Bedroom.unity
+    path: Assets/Scenes/Second/Bedroom-Messy.unity
+    guid: b63b43f825816054991a03dd475c793b
+  - enabled: 1
+    path: Assets/Scenes/Second/Bedroom-Clean.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
     path: Assets/Scenes/Second/Hallway-Second.unity
@@ -35,6 +38,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Breathing.unity
     guid: b2a2231362ffef54eb5c46a3cc149c83
+  - enabled: 1
+    path: Assets/Scenes/First/Hallucination.unity
+    guid: f75d3aac201a96c4384bd4f0930a7de5
   - enabled: 0
     path: Assets/Scenes/Messaging.unity
     guid: 3f828160c5125d445ba9fbd6d87228be
