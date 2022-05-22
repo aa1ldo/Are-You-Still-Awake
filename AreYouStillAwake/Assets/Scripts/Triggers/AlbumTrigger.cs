@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class AlbumTrigger : MonoBehaviour
 {
-    [SerializeField] private GameObject visualCue;
     [SerializeField] private GameObject album;
     [SerializeField] private PlayerMovement player;
 
@@ -20,18 +19,12 @@ public class AlbumTrigger : MonoBehaviour
     {
         if (playerInRange)
         {
-            visualCue.SetActive(true);
             if (Input.GetKeyDown(KeyCode.Z))
             {
                 album.SetActive(true);
                 player.freezePlayer = true;
                 playerInRange = false;
-                visualCue.SetActive(false);
             }
-        }
-        else
-        {
-            visualCue.SetActive(false);
         }
     }
 

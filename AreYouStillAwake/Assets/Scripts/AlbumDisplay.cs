@@ -10,6 +10,12 @@ public class AlbumDisplay : MonoBehaviour
     [SerializeField] private PageRight rightButton;
     [SerializeField] private PageLeft leftButton;
 
+    [HideInInspector] public bool finishedAlbum;
+
+    private void Start()
+    {
+        finishedAlbum = false;
+    }
     private void Awake()
     {
         for (int i = 1; i < pageContents.Length; i++)
@@ -28,6 +34,19 @@ public class AlbumDisplay : MonoBehaviour
             }
 
             pageContents[currentPage - 1].SetActive(true);
+        }
+
+        if(currentPage == pageContents.Length)
+        {
+            finishedAlbum = true;
+        }
+
+        if (finishedAlbum)
+        {
+            if(Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.X))
+            {
+                transform.parent.gameObject.SetActive(false);
+            }
         }
     }
 }

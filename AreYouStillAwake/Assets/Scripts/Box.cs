@@ -19,7 +19,7 @@ public class Box : MonoBehaviour
     [SerializeField] private float thrust;
     [SerializeField] private float incrementVal;
     [SerializeField] private float decreaseVal;
-    [SerializeField] private float maxScore = 100f;
+    public float maxScore = 200f;
 
     private void Start()
     {
@@ -56,9 +56,9 @@ public class Box : MonoBehaviour
             rb.AddForce(transform.up * thrust * Time.deltaTime, ForceMode2D.Impulse);
         }
 
-        if (currentScore >= 100)
+        if (currentScore >= maxScore)
         {
-            currentScore = 100;
+            currentScore = maxScore;
         }
         else if (collided && started)
         {
@@ -79,17 +79,17 @@ public class Box : MonoBehaviour
             }
         }
 
-        if (currentScore >= 40)
+        if (currentScore >= 80)
         {
             blossomAnim.SetBool("SecondThreshold", true);
         }
         
-        if(currentScore >= 80)
+        if(currentScore >= 160)
         {
             blossomAnim.SetBool("ThirdThreshold", true);
         }
         
-        if(currentScore >= 99)
+        if(currentScore >= 199)
         {
             if (!locked)
             {

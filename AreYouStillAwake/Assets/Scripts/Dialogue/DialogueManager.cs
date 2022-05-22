@@ -11,6 +11,8 @@ public class DialogueManager : MonoBehaviour
 
     public Animator anim;
 
+    public bool isOpen;
+
     private Queue<string> sentences;
     void Start()
     {
@@ -19,15 +21,17 @@ public class DialogueManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Z))
         {
             DisplayNextSentence();
         }
+
+        anim.SetBool("IsOpen", isOpen);
     }
 
     public void StartDialogue(Dialogue dialogue)
     {
-        anim.SetBool("IsOpen", true);
+        isOpen = true;
 
         sentences.Clear();
 
@@ -66,6 +70,6 @@ public class DialogueManager : MonoBehaviour
 
     void EndDialogue()
     {
-        anim.SetBool("IsOpen", false);
+        isOpen = false;
     }
 }

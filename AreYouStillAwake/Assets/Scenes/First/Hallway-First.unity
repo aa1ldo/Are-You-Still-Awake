@@ -492,8 +492,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   black: {fileID: 1139567320}
   anim: {fileID: 1139567319}
-  sceneToLoad: 5
-  sceneToUnload: 4
+  sceneToLoad: 6
+  sceneToUnload: 5
 --- !u!61 &950088065
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -687,8 +687,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   black: {fileID: 0}
   anim: {fileID: 0}
-  sceneToLoad: 3
-  sceneToUnload: 4
+  sceneToLoad: 4
+  sceneToUnload: 5
 --- !u!61 &959009841
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1042,8 +1042,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   black: {fileID: 1139567320}
   anim: {fileID: 1139567319}
-  sceneToLoad: 2
-  sceneToUnload: 4
+  sceneToLoad: 3
+  sceneToUnload: 5
 --- !u!1 &1897302576
 GameObject:
   m_ObjectHideFlags: 0

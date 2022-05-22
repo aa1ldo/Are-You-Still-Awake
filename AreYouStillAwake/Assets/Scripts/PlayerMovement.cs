@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     float moveSpeed;
-    [SerializeField] private float maxSpeed = 5f;
+    public float maxSpeed = 5f;
     public bool freezePlayer;
 
     [SerializeField] private Rigidbody2D rb;
@@ -43,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
         {
             moveSpeed = 0f;
         }
-        else
+        else if(!freezePlayer)
         {
             moveSpeed = maxSpeed;
         }

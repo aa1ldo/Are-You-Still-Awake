@@ -5,8 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class ActivityTrigger : MonoBehaviour
 {
-    [SerializeField] private GameObject roomClearingCanvas;
-    [SerializeField] private GameObject snackMakingCanvas;
+    [SerializeField] private PlayerMovement playerMovement;
+    [SerializeField] private Animator roomClearingAnim;
+    [SerializeField] private Animator snackMakingAnim;
 
     [Header("Activity - pick 1")]
     [SerializeField] private bool roomClearingActivity;
@@ -27,11 +28,13 @@ public class ActivityTrigger : MonoBehaviour
             {
                 if (roomClearingActivity)
                 {
-                    roomClearingCanvas.SetActive(true);
+                    roomClearingAnim.SetBool("Fade", true);
+                    playerMovement.freezePlayer = true;
                 }
                 else
                 {
-                    snackMakingCanvas.SetActive(true);
+                    snackMakingAnim.SetBool("Fade", true);
+                    playerMovement.freezePlayer = true;
                 }
                 Destroy(gameObject);
             }

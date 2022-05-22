@@ -4,10 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class BreathingTrigger : MonoBehaviour
-{
-    [SerializeField] private GameObject visualCue;
-    [SerializeField] private string sceneToLoad;
-
+{ 
     bool playerInRange;
 
     private void Awake()
@@ -19,16 +16,11 @@ public class BreathingTrigger : MonoBehaviour
     {
         if (playerInRange)
         {
-            visualCue.SetActive(true);
             if (Input.GetKeyDown(KeyCode.Z))
             {
                 // disable player gameoject
-                SceneManager.LoadSceneAsync(sceneToLoad, LoadSceneMode.Single);
+                SceneManager.LoadSceneAsync("Breathing", LoadSceneMode.Single);
             }
-        }
-        else
-        {
-            visualCue.SetActive(false);
         }
     }
 

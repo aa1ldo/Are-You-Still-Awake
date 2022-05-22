@@ -33,9 +33,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Ground/LivingRoom.unity
     guid: 900f06481ed6dfd438a3d4504b947b4a
   - enabled: 1
-    path: Assets/Scenes/RoomCleaning.unity
-    guid: fe3a671cad049f24da4283fa4da798da
-  - enabled: 1
     path: Assets/Scenes/Breathing.unity
     guid: b2a2231362ffef54eb5c46a3cc149c83
   - enabled: 1
