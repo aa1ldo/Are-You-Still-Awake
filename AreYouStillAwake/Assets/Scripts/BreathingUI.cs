@@ -34,41 +34,87 @@ public class BreathingUI : MonoBehaviour
         {
             StartCoroutine(FadeOut(0f, eyes6));
             StartCoroutine(FadeIn(1f, eyes7));
+            eyes1.color = new Color(255, 255, 255, 0);
+            eyes2.color = new Color(255, 255, 255, 0);
+            eyes3.color = new Color(255, 255, 255, 0);
+            eyes4.color = new Color(255, 255, 255, 0);
+            eyes5.color = new Color(255, 255, 255, 0);
         }
         else if (box.currentScore >= 180f)
         {
             StartCoroutine(FadeOut(0f, eyes5));
             StartCoroutine(FadeIn(1f, eyes6));
+            eyes1.color = new Color(255, 255, 255, 0);
+            eyes2.color = new Color(255, 255, 255, 0);
+            eyes3.color = new Color(255, 255, 255, 0);
+            eyes4.color = new Color(255, 255, 255, 0);
+            eyes7.color = new Color(255, 255, 255, 0);
             eyeAnim.speed = 0f;
         }
         else if (box.currentScore >= 160f)
         {
             StartCoroutine(FadeOut(0f, eyes4));
             StartCoroutine(FadeIn(1f, eyes5));
+            eyes1.color = new Color(255, 255, 255, 0);
+            eyes2.color = new Color(255, 255, 255, 0);
+            eyes3.color = new Color(255, 255, 255, 0);
+            eyes6.color = new Color(255, 255, 255, 0);
+            eyes7.color = new Color(255, 255, 255, 0);
             eyeAnim.speed = 0.2f;
         }
         else if (box.currentScore >= 140f)
         {
             StartCoroutine(FadeOut(0f, eyes3));
             StartCoroutine(FadeIn(1f, eyes4));
+            eyes1.color = new Color(255, 255, 255, 0);
+            eyes2.color = new Color(255, 255, 255, 0);
+            eyes5.color = new Color(255, 255, 255, 0);
+            eyes6.color = new Color(255, 255, 255, 0);
+            eyes7.color = new Color(255, 255, 255, 0);
             eyeAnim.speed = 0.4f;
         }
         else if(box.currentScore >= 120f)
         {
             StartCoroutine(FadeOut(0f, eyes2));
             StartCoroutine(FadeIn(1f, eyes3));
+            eyes1.color = new Color(255, 255, 255, 0);
+            eyes4.color = new Color(255, 255, 255, 0);
+            eyes5.color = new Color(255, 255, 255, 0);
+            eyes6.color = new Color(255, 255, 255, 0);
+            eyes7.color = new Color(255, 255, 255, 0);
             eyeAnim.speed = 0.6f;
         }
         else if(box.currentScore >= 100f)
         {
             StartCoroutine(FadeOut(0f, eyes1));
             StartCoroutine(FadeIn(1f, eyes2));
+            eyes3.color = new Color(255, 255, 255, 0);
+            eyes4.color = new Color(255, 255, 255, 0);
+            eyes5.color = new Color(255, 255, 255, 0);
+            eyes6.color = new Color(255, 255, 255, 0);
+            eyes7.color = new Color(255, 255, 255, 0);
             eyeAnim.speed = 0.8f;
         }
         else if(box.currentScore >= 80f)
+        {
             StartCoroutine(FadeOut(0f, middle));
+            StartCoroutine(FadeIn(1f, eyes1));
+            eyes2.color = new Color(255, 255, 255, 0);
+            eyes3.color = new Color(255, 255, 255, 0);
+            eyes4.color = new Color(255, 255, 255, 0);
+            eyes5.color = new Color(255, 255, 255, 0);
+            eyes6.color = new Color(255, 255, 255, 0);
+            eyes7.color = new Color(255, 255, 255, 0);
+        }
         else if (box.currentScore >= 40f)
+        {
             StartCoroutine(FadeOut(0f, top));
+            StartCoroutine(FadeIn(1f, middle));
+        }
+        else if (box.currentScore >= 0f)
+        {
+            StartCoroutine(FadeIn(1f, top));
+        }
     }
 
     IEnumerator FadeOut(float targetAlpha, Image image)

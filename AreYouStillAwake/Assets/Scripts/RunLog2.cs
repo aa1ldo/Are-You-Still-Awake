@@ -15,7 +15,6 @@ public class RunLog2 : MonoBehaviour
     [Header("Sounds")]
     [SerializeField] private AudioSource typing;
     [SerializeField] private AudioSource recievedMessage;
-    [SerializeField] private AudioSource sentMessage;
 
     // lists of all messages as strings
     [SerializeField] private string[] myMsgs;
@@ -89,7 +88,6 @@ public class RunLog2 : MonoBehaviour
 
     public void OnReply()
     {
-        sentMessage.Play();
         if (myCurrentPos == myNextTrigger)
         {
             // assume the player can still send messages:

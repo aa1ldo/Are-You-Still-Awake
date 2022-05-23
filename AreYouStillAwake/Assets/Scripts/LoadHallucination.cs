@@ -37,5 +37,6 @@ public class LoadHallucination : MonoBehaviour
         }
 
         anim.SetBool("Fade", false);
+
     }
 }

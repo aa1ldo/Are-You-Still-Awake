@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Image fadeOverlay;
     [SerializeField] private Animator fadeAnimator;
 
+    [SerializeField] private CanvasGroup hallucination;
+
     [SerializeField] private Animator roomActivityAnim;
     [SerializeField] private Animator snackActivityAnim;
 
@@ -137,6 +139,8 @@ public class GameManager : MonoBehaviour
 
             roomActivityCanvas.SetActive(true);
             snackActivityCanvas.SetActive(true);
+
+            hallucination.alpha = 0f;
         }
     }
 
@@ -209,7 +213,7 @@ public class GameManager : MonoBehaviour
             playerMovement.freezePlayer = false;
         }
 
-        if(!roomActivity && dialogue5 && !dialogueManager.isOpen)
+        if(!roomActivity && dialogue5 && !dialogueManager.isOpen && completedRoomActivity)
         {
             dialogue5.SetActive(true);
         }
@@ -311,6 +315,12 @@ public class GameManager : MonoBehaviour
         if(!dialogue15 && chat5 && !dialogueManager.isOpen)
         {
             chat5.SetActive(true);
+        }
+
+        if (!chat5)
+        {
+            playerMovement.freezePlayer = true;
+            StartCoroutine(HallucinationFade(1f, hallucination));
         }
 
         if(convoState5.convoDone && !fadeDone3 && dialogue16a)
@@ -419,6 +429,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator Fading1()
     {
+        yield return new WaitForSeconds(1.5f);
         messaging1a.SetActive(false);
         fadeAnimator.SetBool("Fade", true);
         yield return new WaitUntil(() => fadeOverlay.color.a == 1);
@@ -430,6 +441,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator Fading2()
     {
+        yield return new WaitForSeconds(1.5f);
         messaging4.SetActive(false);
         fadeAnimator.SetBool("Fade", true);
         yield return new WaitUntil(() => fadeOverlay.color.a == 1);
@@ -443,8 +455,22 @@ public class GameManager : MonoBehaviour
         playerMovement.maxSpeed = 1.5f;
     }
 
+    IEnumerator HallucinationFade(float targetAlpha, CanvasGroup hallucination)
+    {
+        yield return new WaitForSeconds(5f);
+        targetAlpha = 1f;
+        float curAlpha = hallucination.alpha;
+        while (curAlpha < targetAlpha)
+        {
+            curAlpha = Mathf.Lerp(curAlpha, targetAlpha, 0.2f * Time.deltaTime);
+            hallucination.alpha = curAlpha;
+            yield return null;
+        }
+    }
+
     IEnumerator Fading3()
     {
+        yield return new WaitForSeconds(1.5f);
         messaging5.SetActive(false);
         fadeAnimator.SetBool("Fade", true);
         yield return new WaitUntil(() => fadeOverlay.color.a == 1);
