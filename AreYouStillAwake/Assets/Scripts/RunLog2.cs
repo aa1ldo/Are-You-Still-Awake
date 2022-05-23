@@ -12,6 +12,11 @@ public class RunLog2 : MonoBehaviour
     [SerializeField] private float responseDelay;
     [SerializeField] private bool randomiseResponseTime;
 
+    [Header("Sounds")]
+    [SerializeField] private AudioSource typing;
+    [SerializeField] private AudioSource recievedMessage;
+    [SerializeField] private AudioSource sentMessage;
+
     // lists of all messages as strings
     [SerializeField] private string[] myMsgs;
     [SerializeField] private string[] theirMsgs;
@@ -84,6 +89,7 @@ public class RunLog2 : MonoBehaviour
 
     public void OnReply()
     {
+        sentMessage.Play();
         if (myCurrentPos == myNextTrigger)
         {
             // assume the player can still send messages:
@@ -151,11 +157,17 @@ public class RunLog2 : MonoBehaviour
 
             typingPrompt.SetActive(true);
 
+            typing.Play();
+
             yield return new WaitForSeconds(responseTime);
 
             typingPrompt.SetActive(false);
 
+            typing.Stop();
+
             logControl.LogTextFriend(theirCurrentMsg); // log the friend's message
+
+            recievedMessage.Play();
 
             if (theirCurrentPos >= theirMsgs.Length - 1)
             {

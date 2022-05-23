@@ -5,12 +5,14 @@ using UnityEngine;
 public class ChatTrigger : MonoBehaviour
 {
     [SerializeField] private Animator anim;
+    [SerializeField] private AudioSource notif;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
             anim.SetBool("Notif", true);
+            notif.Play();
             Destroy(gameObject);
         }
     }

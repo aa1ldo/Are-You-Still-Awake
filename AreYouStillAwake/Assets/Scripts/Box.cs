@@ -5,6 +5,7 @@ using UnityEngine;
 public class Box : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private AudioSource ambience;
 
     bool started = false;
     bool onscreen = false;
@@ -45,13 +46,13 @@ public class Box : MonoBehaviour
             onscreen = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.Z) && !started && onscreen)
+        if (Input.GetKeyDown(KeyCode.Space) && !started && onscreen)
         {
             rb.WakeUp();
             started = true;
             blossomAnim.SetBool("FirstThreshold", true);
         }
-        else if(Input.GetKey(KeyCode.Z) && started)
+        else if(Input.GetKey(KeyCode.Space) && started)
         {
             rb.AddForce(transform.up * thrust * Time.deltaTime, ForceMode2D.Impulse);
         }
@@ -102,6 +103,7 @@ public class Box : MonoBehaviour
             boxAnim.SetBool("FadeOut", true);
         }
 
+        ambience.volume = 1f - (currentScore / 200);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float animDuration = 1f;
 
     [SerializeField] private Animator phoneUI;
+    [SerializeField] private AudioSource notif;
 
     [SerializeField] private DialogueManager dialogueManager;
 
@@ -328,31 +329,37 @@ public class GameManager : MonoBehaviour
             {
                 messaging1a.SetActive(true);
                 phoneUI.SetBool("Notif", false);
+                notif.Stop();
             }
             else if (!chat1b && chat2)
             {
                 messaging1b.SetActive(true);
                 phoneUI.SetBool("Notif", false);
+                notif.Stop();
             }
             else if (!chat2 && chat3)
             {
                 messaging2.SetActive(true);
                 phoneUI.SetBool("Notif", false);
+                notif.Stop();
             }
             else if (!chat3 && chat4)
             {
                 messaging3.SetActive(true);
                 phoneUI.SetBool("Notif", false);
+                notif.Stop();
             }
             else if (!chat4 && chat5)
             {
                 messaging4.SetActive(true);
                 phoneUI.SetBool("Notif", false);
+                notif.Stop();
             }
             else if (!chat5)
             {
                 messaging5.SetActive(true);
                 phoneUI.SetBool("Notif", false);
+                notif.Stop();
             }
         }
 
