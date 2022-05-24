@@ -13,6 +13,7 @@ public class Box : MonoBehaviour
     bool collided = false;
     bool locked = false;
     float yPos;
+    public bool meditationComplete;
 
     [SerializeField] private GameObject blossom;
     [SerializeField] Animator boxAnim;
@@ -30,6 +31,7 @@ public class Box : MonoBehaviour
         collided = false;
         locked = false;
         currentScore = 0f;
+        meditationComplete = false;
 
         gameObject.SetActive(true);
     }
@@ -101,6 +103,7 @@ public class Box : MonoBehaviour
             blossomAnim.SetBool("FourthThreshold", true);
             transform.position = new Vector3(transform.position.x, yPos, transform.position.z);
             boxAnim.SetBool("FadeOut", true);
+            meditationComplete = true;
         }
 
         ambience.volume = 1f - (currentScore / 200);

@@ -8,6 +8,8 @@ public class LoadHallucination : MonoBehaviour
 {
     [SerializeField] private Image black;
     [SerializeField] private Animator anim;
+    [SerializeField] private AudioSource ambience;
+    [SerializeField] private GameObject player;
 
     bool loaded;
     bool unloaded;
@@ -38,5 +40,8 @@ public class LoadHallucination : MonoBehaviour
 
         anim.SetBool("Fade", false);
 
+
+        yield return new WaitUntil(() => player.transform.position.x <= 20f && player.transform.position.y <= 14f);
+        ambience.Stop();
     }
 }

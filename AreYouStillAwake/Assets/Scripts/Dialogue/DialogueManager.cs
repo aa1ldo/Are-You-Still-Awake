@@ -11,6 +11,8 @@ public class DialogueManager : MonoBehaviour
 
     public Animator anim;
 
+    public AudioSource typingSFX;
+
     public bool isOpen;
 
     private Queue<string> sentences;
@@ -63,7 +65,9 @@ public class DialogueManager : MonoBehaviour
         foreach(char letter in sentence.ToCharArray())
         {
             dialogueText.text += letter;
-            yield return new WaitForSeconds(0.01f);
+            typingSFX.pitch = Random.Range(0.7f, 0.8f);
+            typingSFX.Play();
+            yield return new WaitForSeconds(0.03f);
         }
         continuePrompt.SetActive(true);
     }

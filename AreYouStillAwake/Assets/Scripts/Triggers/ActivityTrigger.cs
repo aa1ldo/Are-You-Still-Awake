@@ -8,6 +8,7 @@ public class ActivityTrigger : MonoBehaviour
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private Animator roomClearingAnim;
     [SerializeField] private Animator snackMakingAnim;
+    [SerializeField] private AudioSource ambience;
 
     [Header("Activity - pick 1")]
     [SerializeField] private bool roomClearingActivity;

@@ -27,6 +27,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Animator roomActivityAnim;
     [SerializeField] private Animator snackActivityAnim;
 
+    [SerializeField] private AudioSource heartbeat;
+    [SerializeField] private GameObject staticAmbience;
+    [SerializeField] private AudioSource ambience;
+    [SerializeField] private AudioSource clock;
+
     [Header("Triggers")]
     [SerializeField] private GameObject dialogue1;
     [SerializeField] private GameObject dialogue2a;
@@ -59,6 +64,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject dialogue16a;
     [SerializeField] private GameObject dialogue16b;
     [SerializeField] private GameObject breathingActivity;
+    [SerializeField] private GameObject localVolume1;
+    [SerializeField] private GameObject localVolume2;
 
     [Header("UI")]
     [SerializeField] private GameObject messaging1a;
@@ -129,6 +136,9 @@ public class GameManager : MonoBehaviour
             dialogue16a.SetActive(false);
             dialogue16b.SetActive(false);
             breathingActivity.SetActive(false);
+            localVolume1.SetActive(false);
+            localVolume2.SetActive(false);
+            staticAmbience.SetActive(false);
 
             fadeDone1 = false;
             fadeDone2 = false;
@@ -268,7 +278,7 @@ public class GameManager : MonoBehaviour
         if(!dialogue9 && dialogue10)
         {
             dialogue10.SetActive(true);
-            playerMovement.maxSpeed = 2.5f;
+            localVolume1.SetActive(true);
         }
 
         if(!dialogue10 && dialogue11)
@@ -309,6 +319,7 @@ public class GameManager : MonoBehaviour
 
         if(fadeDone2 && dialogue15)
         {
+            localVolume2.SetActive(true);
             dialogue15.SetActive(true);
         }
 
@@ -320,7 +331,6 @@ public class GameManager : MonoBehaviour
         if (!chat5)
         {
             playerMovement.freezePlayer = true;
-            StartCoroutine(HallucinationFade(1f, hallucination));
         }
 
         if(convoState5.convoDone && !fadeDone3 && dialogue16a)
@@ -429,13 +439,17 @@ public class GameManager : MonoBehaviour
 
     IEnumerator Fading1()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
         messaging1a.SetActive(false);
         fadeAnimator.SetBool("Fade", true);
         yield return new WaitUntil(() => fadeOverlay.color.a == 1);
+        ambience.Stop();
+        clock.Play();
         dialogue3a.SetActive(true);
         yield return new WaitForSeconds(0.1f);
         yield return new WaitUntil(() => !dialogueManager.isOpen);
+        ambience.Play();
+        clock.Stop();
         fadeAnimator.SetBool("Fade", false);
     }
 
@@ -445,14 +459,18 @@ public class GameManager : MonoBehaviour
         messaging4.SetActive(false);
         fadeAnimator.SetBool("Fade", true);
         yield return new WaitUntil(() => fadeOverlay.color.a == 1);
+        heartbeat.Stop();
         dialogue14b.SetActive(true);
         yield return new WaitForSeconds(0.1f);
         player.transform.position = new Vector2(4.5f, 6f);
         SceneManager.LoadSceneAsync(2, LoadSceneMode.Additive);
         SceneManager.UnloadSceneAsync(10);
+        heartbeat.Play();
+        staticAmbience.SetActive(true);
         yield return new WaitUntil(() => !dialogueManager.isOpen);
         fadeAnimator.SetBool("Fade", false);
         playerMovement.maxSpeed = 1.5f;
+        StartCoroutine(HallucinationFade(1f, hallucination));
     }
 
     IEnumerator HallucinationFade(float targetAlpha, CanvasGroup hallucination)
