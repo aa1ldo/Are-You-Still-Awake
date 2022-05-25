@@ -350,36 +350,42 @@ public class GameManager : MonoBehaviour
                 messaging1a.SetActive(true);
                 phoneUI.SetBool("Notif", false);
                 notif.Stop();
+                playerMovement.freezePlayer = true;
             }
             else if (!chat1b && chat2)
             {
                 messaging1b.SetActive(true);
                 phoneUI.SetBool("Notif", false);
                 notif.Stop();
+                playerMovement.freezePlayer = true;
             }
             else if (!chat2 && chat3)
             {
                 messaging2.SetActive(true);
                 phoneUI.SetBool("Notif", false);
                 notif.Stop();
+                playerMovement.freezePlayer = true;
             }
             else if (!chat3 && chat4)
             {
                 messaging3.SetActive(true);
                 phoneUI.SetBool("Notif", false);
                 notif.Stop();
+                playerMovement.freezePlayer = true;
             }
             else if (!chat4 && chat5)
             {
                 messaging4.SetActive(true);
                 phoneUI.SetBool("Notif", false);
                 notif.Stop();
+                playerMovement.freezePlayer = true;
             }
             else if (!chat5)
             {
                 messaging5.SetActive(true);
                 phoneUI.SetBool("Notif", false);
                 notif.Stop();
+                playerMovement.freezePlayer = true;
             }
         }
 
@@ -389,6 +395,7 @@ public class GameManager : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.X))
             {
                 messaging1b.SetActive(false);
+                playerMovement.freezePlayer = false;
             }
         }
 
@@ -397,6 +404,7 @@ public class GameManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.X))
             {
                 messaging2.SetActive(false);
+                playerMovement.freezePlayer = false;
             }
         }
 
@@ -405,6 +413,7 @@ public class GameManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.X))
             {
                 messaging3.SetActive(false);
+                playerMovement.freezePlayer = false;
             }
         }
 
@@ -413,6 +422,7 @@ public class GameManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.X))
             {
                 messaging4.SetActive(false);
+                playerMovement.freezePlayer = false;
             }
         }
 
@@ -421,6 +431,7 @@ public class GameManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.X))
             {
                 messaging5.SetActive(false);
+                playerMovement.freezePlayer = false;
             }
         }
     }

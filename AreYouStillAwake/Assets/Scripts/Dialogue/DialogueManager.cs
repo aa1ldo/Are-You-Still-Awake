@@ -65,7 +65,7 @@ public class DialogueManager : MonoBehaviour
         foreach(char letter in sentence.ToCharArray())
         {
             dialogueText.text += letter;
-            typingSFX.pitch = Random.Range(0.7f, 0.8f);
+            typingSFX.pitch = Random.Range(1.5f, 1.7f);
             typingSFX.Play();
             yield return new WaitForSeconds(0.03f);
         }

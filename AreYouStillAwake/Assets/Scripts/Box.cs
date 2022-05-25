@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Box : MonoBehaviour
 {
@@ -13,7 +14,9 @@ public class Box : MonoBehaviour
     bool collided = false;
     bool locked = false;
     float yPos;
-    public bool meditationComplete;
+    public Animator fadeUI;
+    public Animator messageUI;
+    public Animator fullscreenFadeUI;
 
     [SerializeField] private GameObject blossom;
     [SerializeField] Animator boxAnim;
@@ -31,7 +34,6 @@ public class Box : MonoBehaviour
         collided = false;
         locked = false;
         currentScore = 0f;
-        meditationComplete = false;
 
         gameObject.SetActive(true);
     }
@@ -102,8 +104,8 @@ public class Box : MonoBehaviour
 
             blossomAnim.SetBool("FourthThreshold", true);
             transform.position = new Vector3(transform.position.x, yPos, transform.position.z);
-            boxAnim.SetBool("FadeOut", true);
-            meditationComplete = true;
+
+            StartCoroutine(FadeIn());
         }
 
         ambience.volume = 1f - (currentScore / 200);
@@ -123,5 +125,17 @@ public class Box : MonoBehaviour
         {
             collided = false;
         }
+    }
+
+    IEnumerator FadeIn()
+    {
+        boxAnim.SetBool("FadeOut", true);
+        yield return new WaitForSeconds(1f);
+        fadeUI.SetBool("Fade", true);
+        yield return new WaitForSeconds(3f);
+        messageUI.SetBool("Fade", true);
+        yield return new WaitForSeconds(7f);
+        fullscreenFadeUI.SetBool("Fade", true);
+        SceneManager.LoadScene("MainMenu");
     }
 }
