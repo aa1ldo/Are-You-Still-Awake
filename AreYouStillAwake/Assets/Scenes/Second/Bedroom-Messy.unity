@@ -551,6 +551,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneFadeUI
       objectReference: {fileID: 0}
+    - target: {fileID: 1665939185239008086, guid: efab02cacf229b44fbaa38c95f462847, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efab02cacf229b44fbaa38c95f462847, type: 3}
 --- !u!95 &438936810 stripped
@@ -964,18 +968,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.60521054}
+  m_Offset: {x: 0, y: -0.06147489}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.86, y: 1.18}
+    oldSize: {x: 1.12, y: 2.29}
     newSize: {x: 0.86, y: 1.18}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.86, y: 0.12524742}
+  m_Size: {x: 0.86, y: 0.12911731}
   m_EdgeRadius: 0
 --- !u!114 &860122889
 MonoBehaviour:
@@ -991,8 +995,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   black: {fileID: 438936811}
   anim: {fileID: 438936810}
-  sceneToLoad: 3
-  sceneToUnload: 1
+  sceneToLoad: 4
+  sceneToUnload: 2
 --- !u!212 &860122890
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1034,7 +1038,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 39bd96e4b6641f048b3a9ea404af0375, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2d9f0ac6958673c4591fbcef66ad5957, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1053,7 +1057,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 860122887}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.75, y: 9.39, z: 0}
+  m_LocalPosition: {x: 4.75, y: 8.03, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

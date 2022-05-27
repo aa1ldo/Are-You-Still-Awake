@@ -15,6 +15,8 @@ public class DialogueManager : MonoBehaviour
 
     public bool isOpen;
 
+    public PlayerMovement player;
+
     private Queue<string> sentences;
     void Start()
     {

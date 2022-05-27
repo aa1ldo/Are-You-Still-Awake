@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 22a7c6aead8623c4d92dde99dc6b287b
+  - enabled: 1
     path: Assets/Scenes/NeverUnload.unity
     guid: 78d6c08549d1d8e4ba81572726b544fe
   - enabled: 1
@@ -18,9 +21,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Second/Hallway-Second.unity
     guid: 8504e357481514b4b8c0a3fd237e0427
   - enabled: 1
-    path: Assets/Scenes/First/Bathroom.unity
-    guid: 5b8ffe94cc0d88a429f31209a17cb45d
-  - enabled: 1
     path: Assets/Scenes/First/Hallway-First.unity
     guid: 789b7c4190b3da94692996fd8e52cbde
   - enabled: 1
@@ -30,18 +30,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Ground/Kitchen.unity
     guid: ee5c72853df15e740a194bdbf0af82ee
   - enabled: 1
-    path: Assets/Scenes/Ground/LivingRoom.unity
-    guid: 900f06481ed6dfd438a3d4504b947b4a
-  - enabled: 1
     path: Assets/Scenes/Breathing.unity
     guid: b2a2231362ffef54eb5c46a3cc149c83
   - enabled: 1
     path: Assets/Scenes/First/Hallucination.unity
     guid: f75d3aac201a96c4384bd4f0930a7de5
-  - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
-    guid: 22a7c6aead8623c4d92dde99dc6b287b
-  - enabled: 0
-    path: Assets/Scenes/Messaging.unity
-    guid: 3f828160c5125d445ba9fbd6d87228be
   m_configObjects: {}

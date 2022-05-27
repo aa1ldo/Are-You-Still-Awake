@@ -101,7 +101,7 @@ public class GameManager : MonoBehaviour
         if (!gameStart)
         {
             instance = this;
-            SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive);
+            SceneManager.LoadSceneAsync(2, LoadSceneMode.Additive);
             gameStart = true;
 
             // initialise triggers
@@ -337,6 +337,15 @@ public class GameManager : MonoBehaviour
         {
             StartCoroutine(Fading3());
             fadeDone3 = true;
+        }
+
+        if (dialogueManager.isOpen)
+        {
+            playerMovement.freezePlayer = true;
+        }
+        else
+        {
+            playerMovement.freezePlayer = false;
         }
 
 
